@@ -8,6 +8,7 @@ function kimpu_assets() {
     wp_enqueue_style( 'kimpu-footer', get_template_directory_uri() . '/assets/css/footer.css', array( 'kimpu-main' ), $version );
     wp_enqueue_style( 'kimpu-responsive', get_template_directory_uri() . '/assets/css/responsive.css', array( 'kimpu-header', 'kimpu-footer' ), $version );
     wp_enqueue_style( 'kimpu-interactions', get_template_directory_uri() . '/assets/css/interactions.css', array( 'kimpu-responsive' ), $version );
+    if ( is_front_page() ) { wp_enqueue_style( 'kimpu-homepage', get_template_directory_uri() . '/assets/css/homepage.css', array( 'kimpu-interactions' ), $version ); }
     wp_enqueue_script( 'kimpu-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), $version, true );
     wp_enqueue_script( 'kimpu-interactions', get_template_directory_uri() . '/assets/js/theme-interactions.js', array(), $version, true );
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

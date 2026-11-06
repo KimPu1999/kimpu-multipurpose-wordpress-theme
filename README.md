@@ -1,43 +1,65 @@
-# KimPu Multipurpose — Phase 2
+# KimPu Multipurpose — Phase 3
 
-KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, and editorial sites. Version 1.1.0 adds a customizable header and footer builder while preserving the Phase 1 homepage, blog, search, archive, comments, and editor features.
+KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, and editorial sites. Version 1.2.0 adds a native homepage builder and reusable page templates while preserving the Phase 1 content templates and Phase 2 header, footer, navigation, Customizer, and responsive systems.
 
-## System requirements
+## Requirements and installation
 
 - WordPress 6.6 or newer
 - PHP 7.4 or newer
-- A modern browser with JavaScript enabled for the mobile drawer and interactive dropdown controls
 
-## Installation
+Upload `kimpu-multipurpose-phase3.zip` under **Appearance → Themes → Add New → Upload Theme**, activate it, assign Primary and Footer Navigation menus, and configure the theme under **Appearance → Customize**.
 
-1. In WordPress, open **Appearance → Themes → Add New → Upload Theme**.
-2. Upload `kimpu-multipurpose-phase2.zip`, install it, and activate it.
-3. Set the site logo under **Appearance → Customize → Site Identity**.
-4. Create menus under **Appearance → Menus** and assign Primary Navigation and Footer Navigation.
-5. Configure the builder under **Appearance → Customize**.
+## Homepage Builder
 
-## Header Builder
+The **Homepage Builder** section configures twelve native theme sections:
 
-**Header Builder** provides Default, Centered, and Minimal layouts; header colors; height; container width; border and shadow; sticky behavior; CTA label/URL; search; and the Drawer or Dropdown mobile menu style. Nested menu items receive accessible submenu buttons and work with mouse, touch, keyboard focus, and Escape.
+- Hero
+- About
+- Services
+- Features
+- Portfolio
+- Statistics
+- Testimonials
+- Team
+- FAQ
+- Latest Blog
+- Call To Action
+- Contact
 
-## Footer Builder
+Each section has visibility, title, subtitle, description, layout, background, and spacing controls. Section order accepts a validated comma-separated list of section slugs; missing or invalid values are safely appended. This is an ordered selector, not an unimplemented drag-and-drop control.
 
-**Footer Builder** provides Default four-column, Centered, and Minimal layouts; description, copyright text, colors, border, logo visibility, social visibility, and contact fields. Footer widget areas are available as Footer Column 1 through Footer Column 4 under **Appearance → Widgets**. Footer Navigation can be used for quick links, legal links, privacy, and terms.
+The builder does not create demo records. About and Contact can read published Pages and Block Editor content. Services, Testimonials, and Team use published child Pages beneath a selected parent Page. Portfolio and Latest Blog use existing Posts. Features, Statistics, and FAQ use compact line-based settings with safe text/SVG registries and native `<details>` accordions.
 
-## Social Links
+## Hero and section content
 
-Enter URLs under **Appearance → Customize → Social Links** for Facebook, Instagram, YouTube, LinkedIn, X, TikTok, GitHub, and WhatsApp. Empty URLs are not rendered. Links use inline SVG icons, accessible labels, and safe external-link attributes.
+Hero settings include split, centered, and full-width layouts; eyebrow, heading, description, buttons, colors, background/featured images, alt text, overlay opacity, alignment, and vertical spacing. The remaining sections support their documented layout variants, responsive grids, empty states, native responsive images, and reduced-motion-friendly presentation.
 
-## Responsive behavior
+## Page templates
 
-The theme uses responsive containers and a slide-in mobile navigation drawer at widths below 900px. The drawer supports nested menu expansion, overlay closing, Escape, focus restoration, scroll locking, reduced motion, and the optional dropdown mobile style. The layout is designed for 320px through wide desktop screens.
+Available under the Page editor’s **Template** selector:
+
+- Full Width Page
+- No Sidebar Page
+- Landing Page
+- Blank Canvas Page
+- About Page Layout
+- Services Page Layout
+- Portfolio Page Layout
+- Contact Page Layout
+
+The normal `page.php` remains the Default Page template. Landing pages can use independent header/footer layout selections. Blank Canvas pages retain WordPress head/footer hooks but intentionally omit theme navigation and footer chrome.
+
+## Phase 2 compatibility
+
+Header Builder, Footer Builder, Social Links, navigation menus, sticky headers, mobile navigation, footer widgets, existing hero setting IDs, blog templates, comments, and editor styles remain available. The homepage renderer reuses the existing header and footer automatically.
 
 ## Troubleshooting
 
-- If menus do not appear, assign a menu to the correct theme location under **Appearance → Menus**.
-- If a footer column is empty, add a widget or assign the Footer Navigation menu.
-- If Customizer changes do not appear, clear any page/cache plugin cache and reload the page.
-- Sticky headers account for the WordPress admin bar when it is visible.
+- Assign a menu to Primary Navigation and Footer Navigation under **Appearance → Menus**.
+- For Services, Testimonials, or Team, select a published parent Page and create published child Pages beneath it.
+- For Portfolio, publish Posts and optionally assign the selected category.
+- If Customizer changes are not visible, clear site/page-cache plugins and reload.
+- Theme forms are not implemented; add a trusted form plugin/block in a Contact Page or Contact source Page. The theme does not include an insecure mail handler.
 
 ## Developer checks
 
@@ -48,11 +70,6 @@ find assets/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 
 ## Changelog
 
-### 1.1.0
-
-- Added selectable header and footer layouts.
-- Added Customizer sections for Header Builder, Footer Builder, Social Links, and Global Design.
-- Added nested accessible navigation, mobile drawer/dropdown behavior, sticky header support, footer widgets, inline social icons, and expanded design tokens.
-- Preserved Phase 1 templates, homepage settings, menus, editor styles, and content cards.
+See [CHANGELOG.md](CHANGELOG.md).
 
 GPL v2 or later. No third-party assets are bundled.

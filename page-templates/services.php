@@ -1,0 +1,5 @@
+<?php
+/** Template Name: Services Page Layout */
+get_header(); ?>
+<main id="primary" class="site-main section"><div class="container"><header class="section-heading"><p class="eyebrow"><?php esc_html_e( 'WHAT WE DO', 'kimpu-multipurpose' ); ?></p><h1 class="entry-title"><?php the_title(); ?></h1></header><div class="entry-content"><?php while ( have_posts() ) : the_post(); the_content(); wp_link_pages(); endwhile; ?></div><div class="homepage-card-grid homepage-columns-3"><?php $services = get_pages( array( 'parent' => get_the_ID(), 'sort_column' => 'menu_order,post_title', 'sort_order' => 'ASC', 'post_status' => 'publish' ) ); foreach ( $services as $service ) : ?><article class="content-card"><div class="content-card-body"><h2><?php echo esc_html( $service->post_title ); ?></h2><p><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $service->post_content ), 24 ) ); ?></p><a class="text-link" href="<?php echo esc_url( get_permalink( $service->ID ) ); ?>"><?php esc_html_e( 'Learn more', 'kimpu-multipurpose' ); ?> →</a></div></article><?php endforeach; ?></div></div></main>
+<?php get_footer();
