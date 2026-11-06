@@ -1,0 +1,8 @@
+/* Keep below-the-fold sections out of initial rendering work where supported. */
+@supports (content-visibility: auto) {
+    .homepage-section:not(.homepage-hero),
+    .km-home-section:not(.homepage-hero) {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 520px;
+    }
+}

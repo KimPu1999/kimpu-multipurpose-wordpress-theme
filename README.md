@@ -1,6 +1,14 @@
 # KimPu Multipurpose — Phase 5
 
-KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, content-led, and WooCommerce storefront sites. Version 1.5.0 adds an optional WooCommerce presentation layer while preserving the Phase 1 homepage, Phase 2 header/footer/navigation, Phase 3 Homepage Builder, Phase 4 editorial blog, and Phase 5 design system.
+KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, content-led, and WooCommerce storefront sites. Version 1.6.0 adds conservative SEO fallbacks, performance-aware asset and image loading, accessibility improvements, and administrator-only diagnostics while preserving the Phase 1 homepage, Phase 2 header/footer/navigation, Phase 3 Homepage Builder, Phase 4 editorial blog, Phase 5 design system, and Phase 6 WooCommerce layer.
+
+## SEO, performance, and accessibility
+
+The theme uses native document titles and does not replace SEO plugins. When Yoast SEO, Rank Math, or All in One SEO is detected, the theme suppresses its fallback description, Open Graph, Twitter, schema, and breadcrumb output to avoid competing metadata. Without an SEO plugin, it provides conservative fallback metadata, Organization/WebSite/BlogPosting schema where appropriate, and optional accessible breadcrumbs.
+
+Theme scripts are loaded in the footer and receive a deferred loading strategy where safe. Page-specific blog, homepage, WooCommerce, and template assets remain conditional. The configured hero image may be preloaded as the likely LCP candidate; below-the-fold sections use progressive rendering hints where supported. WordPress remains responsible for responsive image `srcset`, media sizes, lazy loading, and image alt text.
+
+Use Tools → KimPu Diagnostics as an administrator for read-only environment checks including WordPress/PHP/theme versions, WooCommerce availability, object-cache detection, debug mode, and missing core theme assets. The diagnostics page does not expose customer data or fabricate performance scores.
 
 ## WooCommerce integration
 

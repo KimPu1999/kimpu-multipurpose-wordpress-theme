@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.0 — Phase 7
+
+- Added conditional performance and accessibility styles, print styles, responsive image sizes, hero-image preload support, and safe deferred loading for theme scripts.
+- Added SEO-plugin ownership detection with conservative fallback descriptions, social metadata, and non-conflicting Organization/WebSite/BlogPosting schema.
+- Added optional accessible breadcrumbs for pages, posts, archives, search, and taxonomy views; WooCommerce and supported SEO plugins retain ownership of their breadcrumb contexts.
+- Improved mobile navigation with submenu ARIA controls, keyboard focus trapping, Escape handling, focus restoration, touch target sizing, and scroll locking.
+- Added administrator-only read-only diagnostics under Tools → KimPu Diagnostics.
+- Updated the theme version to 1.6.0 without changing WordPress or WooCommerce core behavior.
+
 ## 1.5.0 — Phase 6
 
 - Added optional WooCommerce support with product gallery theme support and guarded integration modules.

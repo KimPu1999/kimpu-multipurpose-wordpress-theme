@@ -17,6 +17,9 @@ function kimpu_assets() {
 	wp_enqueue_style( 'kimpu-responsive-design', get_template_directory_uri() . '/assets/css/responsive-design.css', array( 'kimpu-responsive' ), kimpu_asset_version( 'assets/css/responsive-design.css' ) );
 	wp_enqueue_style( 'kimpu-dark-mode', get_template_directory_uri() . '/assets/css/dark-mode.css', array( 'kimpu-responsive-design' ), kimpu_asset_version( 'assets/css/dark-mode.css' ) );
 	wp_enqueue_style( 'kimpu-interactions', get_template_directory_uri() . '/assets/css/interactions.css', array( 'kimpu-dark-mode' ), kimpu_asset_version( 'assets/css/interactions.css' ) );
+	wp_enqueue_style( 'kimpu-performance', get_template_directory_uri() . '/assets/css/performance.css', array( 'kimpu-interactions' ), kimpu_asset_version( 'assets/css/performance.css' ) );
+	wp_enqueue_style( 'kimpu-accessibility', get_template_directory_uri() . '/assets/css/accessibility.css', array( 'kimpu-performance' ), kimpu_asset_version( 'assets/css/accessibility.css' ) );
+	wp_enqueue_style( 'kimpu-print', get_template_directory_uri() . '/assets/css/print.css', array( 'kimpu-accessibility' ), kimpu_asset_version( 'assets/css/print.css' ), 'print' );
 
 	if ( is_front_page() ) { wp_enqueue_style( 'kimpu-homepage', get_template_directory_uri() . '/assets/css/homepage.css', array( 'kimpu-interactions' ), kimpu_asset_version( 'assets/css/homepage.css' ) ); wp_enqueue_style( 'kimpu-homepage-overrides', get_template_directory_uri() . '/assets/css/homepage-overrides.css', array( 'kimpu-homepage' ), kimpu_asset_version( 'assets/css/homepage-overrides.css' ) ); }
 	if ( is_page_template( array( 'page-templates/full-width.php', 'page-templates/no-sidebar.php', 'page-templates/landing.php', 'page-templates/landing-page.php', 'page-templates/blank-canvas.php', 'page-templates/about.php', 'page-templates/services.php', 'page-templates/portfolio.php', 'page-templates/contact.php' ) ) ) { wp_enqueue_style( 'kimpu-page-templates', get_template_directory_uri() . '/assets/css/page-templates.css', array( 'kimpu-interactions' ), kimpu_asset_version( 'assets/css/page-templates.css' ) ); }
@@ -27,7 +30,8 @@ function kimpu_assets() {
 	wp_enqueue_script( 'kimpu-design-interactions', get_template_directory_uri() . '/assets/js/design-interactions.js', array(), kimpu_asset_version( 'assets/js/design-interactions.js' ), true );
 	if ( is_front_page() ) { wp_enqueue_script( 'kimpu-homepage', get_template_directory_uri() . '/assets/js/homepage.js', array(), kimpu_asset_version( 'assets/js/homepage.js' ), true ); }
 
-	$blog_context = is_home() || is_archive() || is_search() || is_author() || is_singular( 'post' );
+	$is_woo_context = function_exists( 'kimpu_wc_is_active' ) && kimpu_wc_is_active() && ( ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) || ( function_exists( 'is_cart' ) && is_cart() ) || ( function_exists( 'is_checkout' ) && is_checkout() ) || ( function_exists( 'is_account_page' ) && is_account_page() ) );
+	$blog_context = is_home() || ( is_archive() && ! $is_woo_context ) || ( is_search() && ! $is_woo_context ) || is_author() || is_singular( 'post' );
 	if ( $blog_context ) {
 		wp_enqueue_style( 'kimpu-blog', get_template_directory_uri() . '/assets/css/blog.css', array( 'kimpu-interactions' ), kimpu_asset_version( 'assets/css/blog.css' ) );
 		wp_enqueue_style( 'kimpu-archive', get_template_directory_uri() . '/assets/css/archive.css', array( 'kimpu-blog' ), kimpu_asset_version( 'assets/css/archive.css' ) );

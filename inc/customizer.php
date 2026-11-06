@@ -17,6 +17,7 @@ require get_template_directory() . '/inc/customizer-footer.php';
 require get_template_directory() . '/inc/customizer-social.php';
 require get_template_directory() . '/inc/customizer-homepage.php';
 require get_template_directory() . '/inc/blog-customizer.php';
+require get_template_directory() . '/inc/seo/customizer.php';
 
 function kimpu_customize_register( $wp_customize ) {
     kimpu_register_global_design_settings( $wp_customize );
@@ -25,6 +26,7 @@ function kimpu_customize_register( $wp_customize ) {
     kimpu_register_social_settings( $wp_customize );
     kimpu_register_homepage_settings( $wp_customize );
     kimpu_register_blog_settings( $wp_customize );
+    kimpu_register_seo_customizer_settings( $wp_customize );
     if ( function_exists( 'kimpu_register_woocommerce_settings' ) ) {
         kimpu_register_woocommerce_settings( $wp_customize );
     }
