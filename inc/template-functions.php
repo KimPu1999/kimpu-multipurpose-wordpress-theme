@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 function kimpu_get_social_links() {
     $networks = array( 'facebook' => 'Facebook', 'instagram' => 'Instagram', 'youtube' => 'YouTube', 'linkedin' => 'LinkedIn', 'x' => 'X', 'tiktok' => 'TikTok', 'github' => 'GitHub', 'whatsapp' => 'WhatsApp' );
     $links = array();
-    foreach ( $networks as $key => $label ) { $url = esc_url( get_theme_mod( 'kimpu_social_' . $key, '' ) ); if ( $url ) { $links[ $key ] = array( 'label' => $label, 'url' => $url ); } }
+    foreach ( $networks as $key => $label ) { $url = function_exists( 'kimpu_sanitize_social_url' ) ? kimpu_sanitize_social_url( get_theme_mod( 'kimpu_social_' . $key, '' ) ) : esc_url_raw( get_theme_mod( 'kimpu_social_' . $key, '' ), array( 'http', 'https' ) ); if ( $url ) { $links[ $key ] = array( 'label' => $label, 'url' => $url ); } }
     return $links;
 }
 

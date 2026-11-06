@@ -2,6 +2,7 @@
 /** Theme bootstrap. */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 require get_template_directory() . '/inc/setup.php';
+require get_template_directory() . '/inc/elementor.php';
 require get_template_directory() . '/inc/optimization/performance.php';
 require get_template_directory() . '/inc/optimization/images.php';
 require get_template_directory() . '/inc/optimization/scripts.php';

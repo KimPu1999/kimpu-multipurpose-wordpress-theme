@@ -20,6 +20,10 @@ The theme supports native WooCommerce product queries, classic templates, WooCom
 
 If WooCommerce is inactive, all WooCommerce PHP, assets, templates, and homepage sections safely become no-ops and the rest of the theme remains available.
 
+## Elementor Header and Footer Integration
+
+When Elementor Pro or a compatible Header/Footer Builder exposes the documented `elementor_theme_do_location()` API, the theme renders matching Elementor `header` and `footer` locations and leaves Elementor display conditions authoritative. The native PHP Header and Footer remain fallbacks and can be enabled or disabled under **Appearance → Customize → Elementor Integration**. Elementor Canvas continues to omit the site chrome by design. Elementor is optional; without a supported location renderer, the native theme components are used.
+
 ## Global Design Builder
 
 The **KimPu Global Design** panel provides validated design presets, global color tokens, system-safe typography, layout widths, button and form styling, spacing and radius controls, responsive values, and Light/Dark/System color modes. The five presets are Premium Emerald, Corporate Blue, Elegant Purple, Warm Orange, and Minimal Neutral. Choose **Custom values** when individual controls should take precedence over a preset.
