@@ -13,7 +13,6 @@
     item.classList.toggle('is-submenu-open', open);
     if (toggle) {
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', (open ? 'Collapse ' : 'Expand ') + ((item.querySelector(':scope > a') || {}).textContent || '') + ' submenu');
     }
   }
 

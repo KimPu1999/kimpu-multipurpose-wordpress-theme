@@ -1,6 +1,7 @@
 (function () {
   'use strict';
   var root = document.documentElement;
+  var i18n = window.kimpuThemeModeI18n || { dark: 'Use dark color theme', light: 'Use light color theme' };
   var storageKey = 'kimpu-theme-mode';
   var buttons = function () { return document.querySelectorAll('[data-kimpu-theme-toggle]'); };
   var saved = function () { try { return window.localStorage.getItem(storageKey); } catch (error) { return null; } };
@@ -12,9 +13,9 @@
     buttons().forEach(function (button) {
       var next = value === 'dark' ? 'light' : 'dark';
       button.setAttribute('aria-pressed', value === 'dark' ? 'true' : 'false');
-      button.setAttribute('aria-label', next === 'dark' ? 'Use dark color theme' : 'Use light color theme');
+      button.setAttribute('aria-label', next === 'dark' ? i18n.dark : i18n.light);
       var label = button.querySelector('[data-kimpu-theme-label]');
-      if (label) { label.textContent = next === 'dark' ? 'Use dark color theme' : 'Use light color theme'; }
+      if (label) { label.textContent = next === 'dark' ? i18n.dark : i18n.light; }
     });
   };
   update(saved() || root.getAttribute('data-theme') || 'system', false);

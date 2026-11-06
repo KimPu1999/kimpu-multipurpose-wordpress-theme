@@ -60,6 +60,7 @@ function kimpu_wc_enqueue_assets() {
 
 	if ( $is_product_context && file_exists( $dir . '/assets/js/product.js' ) ) {
 		wp_enqueue_script( 'kimpu-product', $uri . '/assets/js/product.js', array( 'jquery' ), $version, true );
+		wp_localize_script( 'kimpu-product', 'kimpuProductI18n', array( 'increase' => __( 'Increase quantity', 'kimpu-multipurpose' ), 'decrease' => __( 'Decrease quantity', 'kimpu-multipurpose' ) ) );
 	}
 
 	if ( ( $is_cart_context || $is_checkout ) && file_exists( $dir . '/assets/js/cart-interactions.js' ) ) {

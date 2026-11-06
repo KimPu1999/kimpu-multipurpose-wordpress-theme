@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-function kimpu_asset_version( $relative_path ) { $file = get_template_directory() . '/' . ltrim( $relative_path, '/' ); return file_exists( $file ) ? (string) filemtime( $file ) : wp_get_theme()->get( 'Version' ); }
+function kimpu_asset_version( $relative_path = '' ) { if ( '' === $relative_path ) { return (string) wp_get_theme()->get( 'Version' ); } $file = get_template_directory() . '/' . ltrim( $relative_path, '/' ); return file_exists( $file ) ? (string) filemtime( $file ) : (string) wp_get_theme()->get( 'Version' ); }
 
 function kimpu_assets() {
 	$version = wp_get_theme()->get( 'Version' );
@@ -27,6 +27,7 @@ function kimpu_assets() {
 	wp_enqueue_script( 'kimpu-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), kimpu_asset_version( 'assets/js/navigation.js' ), true );
 	wp_enqueue_script( 'kimpu-interactions', get_template_directory_uri() . '/assets/js/theme-interactions.js', array(), kimpu_asset_version( 'assets/js/theme-interactions.js' ), true );
 	wp_enqueue_script( 'kimpu-theme-mode', get_template_directory_uri() . '/assets/js/theme-mode.js', array(), kimpu_asset_version( 'assets/js/theme-mode.js' ), true );
+	wp_localize_script( 'kimpu-theme-mode', 'kimpuThemeModeI18n', array( 'dark' => __( 'Use dark color theme', 'kimpu-multipurpose' ), 'light' => __( 'Use light color theme', 'kimpu-multipurpose' ) ) );
 	wp_enqueue_script( 'kimpu-design-interactions', get_template_directory_uri() . '/assets/js/design-interactions.js', array(), kimpu_asset_version( 'assets/js/design-interactions.js' ), true );
 	if ( is_front_page() ) { wp_enqueue_script( 'kimpu-homepage', get_template_directory_uri() . '/assets/js/homepage.js', array(), kimpu_asset_version( 'assets/js/homepage.js' ), true ); }
 
@@ -37,6 +38,7 @@ function kimpu_assets() {
 		wp_enqueue_style( 'kimpu-archive', get_template_directory_uri() . '/assets/css/archive.css', array( 'kimpu-blog' ), kimpu_asset_version( 'assets/css/archive.css' ) );
 		wp_enqueue_style( 'kimpu-blog-responsive', get_template_directory_uri() . '/assets/css/blog-responsive.css', array( 'kimpu-archive' ), kimpu_asset_version( 'assets/css/blog-responsive.css' ) );
 		wp_enqueue_script( 'kimpu-blog', get_template_directory_uri() . '/assets/js/blog.js', array(), kimpu_asset_version( 'assets/js/blog.js' ), true );
+		wp_localize_script( 'kimpu-blog', 'kimpuBlogI18n', array( 'copied' => __( 'Link copied.', 'kimpu-multipurpose' ), 'copy_failed' => __( 'Copy failed.', 'kimpu-multipurpose' ) ) );
 		$blog_columns = absint( get_theme_mod( 'kimpu_blog_columns', 3 ) ); $blog_columns = in_array( $blog_columns, array( 2, 3, 4 ), true ) ? $blog_columns : 3; wp_add_inline_style( 'kimpu-blog', '.blog-layout-grid{grid-template-columns:repeat(' . $blog_columns . ',minmax(0,1fr));}' );
 	}
 	if ( is_singular( 'post' ) ) {

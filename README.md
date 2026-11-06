@@ -1,6 +1,6 @@
-# KimPu Multipurpose — Phase 5
+# KimPu Multipurpose — Production Readiness Release 2.0.0
 
-KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, content-led, and WooCommerce storefront sites. Version 1.6.0 adds conservative SEO fallbacks, performance-aware asset and image loading, accessibility improvements, and administrator-only diagnostics while preserving the Phase 1 homepage, Phase 2 header/footer/navigation, Phase 3 Homepage Builder, Phase 4 editorial blog, Phase 5 design system, and Phase 6 WooCommerce layer.
+KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, content-led, and WooCommerce storefront sites. Version 2.0.0 consolidates the Phase 1–7 feature set, applies confirmed security, runtime-warning, translation, and release-documentation fixes, and records the limits of the available local verification environment.
 
 ## SEO, performance, and accessibility
 
@@ -33,7 +33,7 @@ Global settings compile into safe CSS custom properties shared by the Header Bui
 - WordPress 6.6 or newer
 - PHP 7.4 or newer
 
-Use the existing theme directory or your normal WordPress theme deployment process, activate the theme, assign Primary and Footer Navigation menus, and configure it under **Appearance → Customize**. No ZIP or separate plugin is required for Phase 4.
+Use the existing theme directory or your normal WordPress theme deployment process, activate the theme, assign Primary and Footer Navigation menus, and configure it under **Appearance → Customize**. No ZIP or separate plugin is required by the theme.
 
 ## Blog and content system
 
@@ -106,6 +106,8 @@ Header Builder, Footer Builder, Social Links, navigation menus, sticky headers, 
 find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
 find assets/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 ```
+
+The repository also contains release-readiness notes under `docs/`. Static PHP and JavaScript checks are available locally; live WordPress, browser accessibility, Lighthouse, PHPCS, and WooCommerce staging checks require an available test installation and are not implied by the commands above.
 
 ## Changelog
 
