@@ -2,11 +2,11 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 function kimpu_homepage_sections() {
-    return array( 'hero', 'about', 'services', 'features', 'portfolio', 'statistics', 'testimonials', 'team', 'faq', 'latest', 'cta', 'contact' );
+    return apply_filters( 'kimpu_homepage_sections', array( 'hero', 'about', 'services', 'features', 'portfolio', 'statistics', 'testimonials', 'team', 'faq', 'latest', 'cta', 'contact' ) );
 }
 
 function kimpu_homepage_section_defaults() {
-    return array( 'hero' => true, 'about' => true, 'services' => false, 'features' => true, 'portfolio' => false, 'statistics' => false, 'testimonials' => false, 'team' => false, 'faq' => false, 'latest' => true, 'cta' => false, 'contact' => false );
+    return apply_filters( 'kimpu_homepage_section_defaults', array( 'hero' => true, 'about' => true, 'services' => false, 'features' => true, 'portfolio' => false, 'statistics' => false, 'testimonials' => false, 'team' => false, 'faq' => false, 'latest' => true, 'cta' => false, 'contact' => false ) );
 }
 
 function kimpu_sanitize_homepage_order( $value ) {

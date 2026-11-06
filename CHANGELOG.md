@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.0 — Phase 6
+
+- Added optional WooCommerce support with product gallery theme support and guarded integration modules.
+- Added responsive shop, category, product-card, single-product, cart, checkout, and account presentation styles.
+- Added Grid, List, and Modern Storefront shop layout controls, native product filtering, sorting, pagination, and empty states.
+- Added optional homepage Featured Products, New Arrivals, Best Sellers, On Sale, Product Categories, and Promotional Banner sections.
+- Added header cart icon/count integration using WooCommerce cart fragments without custom cart storage or totals.
+- Added WooCommerce Customizer controls for shop, product cards, single products, cart/checkout, account pages, header cart, and homepage products.
+- Preserved WooCommerce's native variation, stock, tax, shipping, payment, order, HPOS, Blocks, and customer-authentication behavior.
+
 ## 1.4.0 — Phase 5
 
 - Added the KimPu Global Design Customizer panel with design presets, global colors, typography, layout, buttons/forms, spacing, responsive values, and advanced settings.

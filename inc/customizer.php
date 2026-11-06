@@ -25,5 +25,8 @@ function kimpu_customize_register( $wp_customize ) {
     kimpu_register_social_settings( $wp_customize );
     kimpu_register_homepage_settings( $wp_customize );
     kimpu_register_blog_settings( $wp_customize );
+    if ( function_exists( 'kimpu_register_woocommerce_settings' ) ) {
+        kimpu_register_woocommerce_settings( $wp_customize );
+    }
 }
 add_action( 'customize_register', 'kimpu_customize_register' );

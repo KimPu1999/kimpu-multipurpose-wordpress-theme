@@ -1,6 +1,16 @@
 # KimPu Multipurpose — Phase 5
 
-KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, and content-led sites. Version 1.4.0 adds a global design system and advanced Customizer-based design builder while preserving the Phase 1 homepage, Phase 2 header/footer/navigation, Phase 3 Homepage Builder, and Phase 4 editorial blog.
+KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, content-led, and WooCommerce storefront sites. Version 1.5.0 adds an optional WooCommerce presentation layer while preserving the Phase 1 homepage, Phase 2 header/footer/navigation, Phase 3 Homepage Builder, Phase 4 editorial blog, and Phase 5 design system.
+
+## WooCommerce integration
+
+WooCommerce is optional. When active, the theme adds responsive shop, category, product, cart, checkout, and account styling without replacing WooCommerce's commerce engine. Product prices, variations, stock, taxes, shipping, coupons, payments, and orders remain authoritative in WooCommerce.
+
+Use Appearance → Customize → KimPu WooCommerce Design to choose shop layouts, product card presentation, single-product layout, account styling, header cart visibility, and optional homepage product sections. The homepage product sections use real published WooCommerce products and remain hidden unless enabled and populated.
+
+The theme supports native WooCommerce product queries, classic templates, WooCommerce Blocks styling, variable products, product filters, the native cart fragment mechanism, and optional wishlist presentation only when a supported wishlist plugin is already active. No plugin is installed or activated by the theme.
+
+If WooCommerce is inactive, all WooCommerce PHP, assets, templates, and homepage sections safely become no-ops and the rest of the theme remains available.
 
 ## Global Design Builder
 
