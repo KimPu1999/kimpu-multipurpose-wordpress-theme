@@ -1,0 +1,1 @@
+<header class="archive-header section-heading"><h1><?php echo wp_kses_post( get_the_archive_title() ); ?></h1><?php if ( kimpu_blog_mod( 'archive_description', true ) ) { the_archive_description( '<div class="archive-description">', '</div>' ); } ?></header>

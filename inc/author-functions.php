@@ -1,0 +1,3 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+function kimpu_public_author_data( $author_id = 0 ) { $author_id = $author_id ? absint( $author_id ) : get_the_author_meta( 'ID' ); $user = get_userdata( $author_id ); if ( ! $user ) { return array(); } return array( 'id' => $author_id, 'name' => get_the_author_meta( 'display_name', $author_id ), 'bio' => get_the_author_meta( 'description', $author_id ), 'url' => get_the_author_meta( 'user_url', $author_id ), 'avatar' => get_avatar( $author_id, 96, '', get_the_author_meta( 'display_name', $author_id ), array( 'class' => array( 'author-avatar' ), 'alt' => get_the_author_meta( 'display_name', $author_id ) ) ), 'archive' => get_author_posts_url( $author_id ) ); }

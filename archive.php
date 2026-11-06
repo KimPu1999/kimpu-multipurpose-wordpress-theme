@@ -1,7 +1,3 @@
 <?php get_header(); ?>
-<main id="primary" class="site-main section"><div class="container">
-<header class="section-heading"><h1><?php the_archive_title(); ?></h1><?php the_archive_description( '<div class="archive-description">', '</div>' ); ?></header>
-<?php if ( have_posts() ) : ?><div class="post-grid"><?php while ( have_posts() ) : the_post(); get_template_part( 'template-parts/content', 'card' ); endwhile; ?></div><div class="pagination"><?php the_posts_pagination(); ?></div>
-<?php else : ?><p class="empty-state"><?php esc_html_e( 'No articles in this archive.', 'kimpu-multipurpose' ); ?></p><?php endif; ?>
-</div></main>
+<main id="primary" class="site-main archive-page section"><div class="container blog-container"><div class="blog-layout blog-sidebar-<?php echo esc_attr( kimpu_blog_sidebar_position() ); ?><?php echo kimpu_blog_sidebar_active() ? ' has-blog-sidebar' : ''; ?>" style="--blog-sidebar-width:<?php echo esc_attr( kimpu_blog_mod( 'sidebar_width', '280px' ) ); ?>"><div class="blog-main"><?php get_template_part( 'template-parts/blog/archive-header' ); ?><?php if ( have_posts() ) : ?><div class="blog-results blog-layout-<?php echo esc_attr( kimpu_blog_layout() ); ?>"><?php kimpu_blog_render_loop(); ?></div><?php kimpu_blog_pagination(); else : ?><?php get_template_part( 'template-parts/blog/empty-state' ); ?><?php endif; ?></div><?php if ( kimpu_blog_sidebar_active() ) : ?><aside class="blog-sidebar" aria-label="<?php esc_attr_e( 'Blog sidebar', 'kimpu-multipurpose' ); ?>"><?php dynamic_sidebar( 'blog-sidebar' ); ?></aside><?php endif; ?></div></div></main>
 <?php get_footer(); ?>

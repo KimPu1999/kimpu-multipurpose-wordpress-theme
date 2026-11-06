@@ -1,0 +1,1 @@
+<div class="empty-state blog-empty-state"><h2><?php esc_html_e( 'No articles found', 'kimpu-multipurpose' ); ?></h2><p><?php esc_html_e( 'Try another search or browse the categories to find something useful.', 'kimpu-multipurpose' ); ?></p><?php get_search_form(); ?></div>

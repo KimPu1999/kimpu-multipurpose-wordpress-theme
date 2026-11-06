@@ -1,0 +1,4 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+function kimpu_reading_time_minutes( $post_id = 0 ) { $post_id = $post_id ? absint( $post_id ) : get_the_ID(); $content = $post_id ? get_post_field( 'post_content', $post_id ) : ''; $text = trim( wp_strip_all_tags( strip_shortcodes( (string) $content ) ) ); if ( '' === $text ) { return 0; } preg_match_all( '/[\p{L}\p{N}]+/u', $text, $matches ); $words = ! empty( $matches[0] ) ? count( $matches[0] ) : str_word_count( $text ); $wpm = max( 100, min( 1000, absint( get_theme_mod( 'kimpu_reading_wpm', 200 ) ) ) ); return max( 1, (int) ceil( $words / $wpm ) ); }
+function kimpu_reading_time_text( $post_id = 0 ) { $minutes = kimpu_reading_time_minutes( $post_id ); return $minutes ? sprintf( _n( '%d min read', '%d min read', $minutes, 'kimpu-multipurpose' ), $minutes ) : ''; }

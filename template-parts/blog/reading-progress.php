@@ -1,0 +1,1 @@
+<div class="reading-progress" aria-hidden="true"><span class="reading-progress-bar"></span></div>

@@ -1,0 +1,3 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+function kimpu_blog_pagination() { global $wp_query; if ( ! $wp_query || $wp_query->max_num_pages < 2 ) { return; } echo '<nav class="pagination blog-pagination" aria-label="' . esc_attr__( 'Posts navigation', 'kimpu-multipurpose' ) . '">'; echo wp_kses_post( paginate_links( array( 'total' => max( 1, $wp_query->max_num_pages ), 'current' => max( 1, get_query_var( 'paged' ) ), 'type' => 'list', 'mid_size' => 1, 'prev_text' => __( 'Previous', 'kimpu-multipurpose' ), 'next_text' => __( 'Next', 'kimpu-multipurpose' ), 'add_args' => is_search() ? array( 's' => get_search_query() ) : array() ) ) ); echo '</nav>'; }

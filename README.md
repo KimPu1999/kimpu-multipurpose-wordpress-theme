@@ -1,13 +1,21 @@
-# KimPu Multipurpose — Phase 3
+# KimPu Multipurpose — Phase 4
 
-KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, and editorial sites. Version 1.2.0 adds a native homepage builder and reusable page templates while preserving the Phase 1 content templates and Phase 2 header, footer, navigation, Customizer, and responsive systems.
+KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, and content-led sites. Version 1.3.0 adds a native editorial blog and content-management presentation system while preserving the Phase 1 homepage, Phase 2 header/footer/navigation, and Phase 3 Homepage Builder.
 
 ## Requirements and installation
 
 - WordPress 6.6 or newer
 - PHP 7.4 or newer
 
-Upload `kimpu-multipurpose-phase3.zip` under **Appearance → Themes → Add New → Upload Theme**, activate it, assign Primary and Footer Navigation menus, and configure the theme under **Appearance → Customize**.
+Use the existing theme directory or your normal WordPress theme deployment process, activate the theme, assign Primary and Footer Navigation menus, and configure it under **Appearance → Customize**. No ZIP or separate plugin is required for Phase 4.
+
+## Blog and content system
+
+The **KimPu Blog Settings** panel provides Grid, List, and Magazine listing layouts; featured article presentation; configurable card metadata; sidebar position and width; single-post layout options; table of contents; reading progress; author box; social sharing; related posts; archive presentation; and reading-speed settings.
+
+Blog pages use native WordPress Posts, Categories, Tags, Authors, Search, Excerpts, Featured Images, Gutenberg content, revisions, scheduling, sticky posts, and comments. Category, tag, author, and search archives use the WordPress main query with reusable pagination. No custom SQL, editorial CPT, role changes, or private user metadata are introduced.
+
+Single posts support full-width, content-plus-sidebar, and narrow-reading layouts, updated dates, reading time, responsive featured images, optional H2/H3 TOC, progress bar, copy-link sharing, author box, related posts, adjacent navigation, tags, and comments.
 
 ## Homepage Builder
 
@@ -51,9 +59,9 @@ Available under the Page editor’s **Template** selector:
 
 The normal `page.php` remains the Default Page template. Landing pages can use independent header/footer layout selections. Blank Canvas pages retain WordPress head/footer hooks but intentionally omit theme navigation and footer chrome.
 
-## Phase 2 compatibility
+## Phase 1–3 compatibility
 
-Header Builder, Footer Builder, Social Links, navigation menus, sticky headers, mobile navigation, footer widgets, existing hero setting IDs, blog templates, comments, and editor styles remain available. The homepage renderer reuses the existing header and footer automatically.
+Header Builder, Footer Builder, Social Links, navigation menus, sticky headers, mobile navigation, footer widgets, existing hero setting IDs, Homepage Builder sections, page templates, comments, and editor styles remain available. The blog renderer reuses the existing header and footer automatically.
 
 ## Troubleshooting
 
@@ -61,6 +69,7 @@ Header Builder, Footer Builder, Social Links, navigation menus, sticky headers, 
 - For Services, Testimonials, or Team, select a published parent Page and create published child Pages beneath it.
 - For Portfolio, publish Posts and optionally assign the selected category.
 - If Customizer changes are not visible, clear site/page-cache plugins and reload.
+- Add widgets to **Appearance → Widgets → Blog Sidebar** and enable the sidebar in **KimPu Blog Settings** to display it.
 - Theme forms are not implemented; add a trusted form plugin/block in a Contact Page or Contact source Page. The theme does not include an insecure mail handler.
 
 ## Developer checks

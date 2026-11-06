@@ -27,12 +27,13 @@ function kimpu_widgets_init() {
         'footer-2' => __( 'Footer Column 2', 'kimpu-multipurpose' ),
         'footer-3' => __( 'Footer Column 3', 'kimpu-multipurpose' ),
         'footer-4' => __( 'Footer Column 4', 'kimpu-multipurpose' ),
+        'blog-sidebar' => __( 'Blog Sidebar', 'kimpu-multipurpose' ),
     );
     foreach ( $areas as $id => $name ) {
         register_sidebar( array(
             'name'          => $name,
             'id'            => $id,
-            'description'   => __( 'Optional widget area for the KimPu footer builder.', 'kimpu-multipurpose' ),
+            'description'   => __( 'Optional widget area for the KimPu theme.', 'kimpu-multipurpose' ),
             'before_widget' => '<section class="footer-widget %2$s" id="%1$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="footer-widget-title">',

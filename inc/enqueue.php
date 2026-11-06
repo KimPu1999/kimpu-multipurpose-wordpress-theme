@@ -13,6 +13,20 @@ function kimpu_assets() {
     wp_enqueue_script( 'kimpu-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), $version, true );
     wp_enqueue_script( 'kimpu-interactions', get_template_directory_uri() . '/assets/js/theme-interactions.js', array(), $version, true );
     if ( is_front_page() ) { wp_enqueue_script( 'kimpu-homepage', get_template_directory_uri() . '/assets/js/homepage.js', array(), $version, true ); }
+    $blog_context = is_home() || is_archive() || is_search() || is_author() || is_singular( 'post' );
+    if ( $blog_context ) {
+        wp_enqueue_style( 'kimpu-blog', get_template_directory_uri() . '/assets/css/blog.css', array( 'kimpu-interactions' ), $version );
+        wp_enqueue_style( 'kimpu-archive', get_template_directory_uri() . '/assets/css/archive.css', array( 'kimpu-blog' ), $version );
+        wp_enqueue_style( 'kimpu-blog-responsive', get_template_directory_uri() . '/assets/css/blog-responsive.css', array( 'kimpu-archive' ), $version );
+        wp_enqueue_script( 'kimpu-blog', get_template_directory_uri() . '/assets/js/blog.js', array(), $version, true );
+        $blog_columns = absint( get_theme_mod( 'kimpu_blog_columns', 3 ) ); $blog_columns = in_array( $blog_columns, array( 2, 3, 4 ), true ) ? $blog_columns : 3;
+        wp_add_inline_style( 'kimpu-blog', '.blog-layout-grid{grid-template-columns:repeat(' . $blog_columns . ',minmax(0,1fr));}' );
+    }
+    if ( is_singular( 'post' ) ) {
+        wp_enqueue_style( 'kimpu-single-post', get_template_directory_uri() . '/assets/css/single-post.css', array( 'kimpu-blog-responsive' ), $version );
+        if ( function_exists( 'kimpu_blog_mod' ) && kimpu_blog_mod( 'reading_progress', false ) ) { wp_enqueue_script( 'kimpu-reading-progress', get_template_directory_uri() . '/assets/js/reading-progress.js', array(), $version, true ); }
+        if ( function_exists( 'kimpu_blog_mod' ) && kimpu_blog_mod( 'toc_enabled', false ) ) { wp_enqueue_script( 'kimpu-table-of-contents', get_template_directory_uri() . '/assets/js/table-of-contents.js', array(), $version, true ); }
+    }
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
