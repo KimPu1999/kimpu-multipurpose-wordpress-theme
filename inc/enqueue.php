@@ -1,0 +1,30 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+function kimpu_assets() {
+    $version = wp_get_theme()->get( 'Version' );
+    wp_enqueue_style( 'kimpu-style', get_stylesheet_uri(), array(), $version );
+    wp_enqueue_style( 'kimpu-main', get_template_directory_uri() . '/assets/css/main.css', array( 'kimpu-style' ), $version );
+    wp_enqueue_style( 'kimpu-header', get_template_directory_uri() . '/assets/css/header.css', array( 'kimpu-main' ), $version );
+    wp_enqueue_style( 'kimpu-footer', get_template_directory_uri() . '/assets/css/footer.css', array( 'kimpu-main' ), $version );
+    wp_enqueue_style( 'kimpu-responsive', get_template_directory_uri() . '/assets/css/responsive.css', array( 'kimpu-header', 'kimpu-footer' ), $version );
+    wp_enqueue_style( 'kimpu-interactions', get_template_directory_uri() . '/assets/css/interactions.css', array( 'kimpu-responsive' ), $version );
+    wp_enqueue_script( 'kimpu-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), $version, true );
+    wp_enqueue_script( 'kimpu-interactions', get_template_directory_uri() . '/assets/js/theme-interactions.js', array(), $version, true );
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
+    $vars = array(
+        '--km-primary' => get_theme_mod( 'kimpu_primary_color', '#137c66' ), '--color-primary' => get_theme_mod( 'kimpu_primary_color', '#137c66' ), '--km-text' => get_theme_mod( 'kimpu_text_color', '#34465a' ), '--color-text' => get_theme_mod( 'kimpu_text_color', '#34465a' ), '--km-background' => get_theme_mod( 'kimpu_background_color', '#ffffff' ), '--km-container' => absint( get_theme_mod( 'kimpu_container_width', 1200 ) ) . 'px', '--container' => absint( get_theme_mod( 'kimpu_container_width', 1200 ) ) . 'px', '--km-radius-md' => absint( get_theme_mod( 'kimpu_button_radius', 10 ) ) . 'px', '--km-header-bg' => get_theme_mod( 'kimpu_header_background', '#ffffff' ), '--km-header-text' => get_theme_mod( 'kimpu_header_text_color', '#17283b' ), '--km-header-height' => absint( get_theme_mod( 'kimpu_header_height', 84 ) ) . 'px', '--km-footer-bg' => get_theme_mod( 'kimpu_footer_background', '#17283b' ), '--km-footer-text' => get_theme_mod( 'kimpu_footer_text_color', '#bfcad5' ), '--km-footer-heading' => get_theme_mod( 'kimpu_footer_heading_color', '#ffffff' ),
+    );
+    $css = ':root{';
+    foreach ( $vars as $property => $value ) {
+        if ( 0 === strpos( $property, '--km-' ) && false !== strpos( $property, 'color' ) || false !== strpos( $property, 'bg' ) || false !== strpos( $property, 'text' ) || false !== strpos( $property, 'heading' ) || '--km-primary' === $property ) { $value = sanitize_hex_color( $value ); }
+        if ( $value ) { $css .= $property . ':' . esc_attr( $value ) . ';'; }
+    }
+    $css .= '}';
+    if ( ! get_theme_mod( 'kimpu_header_border', false ) ) { $css .= '.site-header{border-bottom:0!important;}'; }
+    if ( ! get_theme_mod( 'kimpu_header_shadow', false ) ) { $css .= '.site-header:not(.is-scrolled){box-shadow:none;}'; }
+    if ( ! get_theme_mod( 'kimpu_footer_border', true ) ) { $css .= '.site-footer{border-top:0!important;}'; }
+    wp_add_inline_style( 'kimpu-main', $css );
+}
+add_action( 'wp_enqueue_scripts', 'kimpu_assets' );

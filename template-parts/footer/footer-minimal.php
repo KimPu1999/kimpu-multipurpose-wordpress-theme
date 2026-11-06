@@ -1,0 +1,1 @@
+<div class="container footer-minimal-inner"><span><?php echo esc_html( get_theme_mod( 'kimpu_footer_copyright', '© ' . date_i18n( 'Y' ) . ' ' . get_bloginfo( 'name' ) ) ); ?></span><?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'fallback_cb' => false ) ); ?></div>
