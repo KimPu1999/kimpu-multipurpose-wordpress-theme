@@ -1,7 +1,7 @@
 <?php
 $layout = kimpu_homepage_section_value( 'hero', 'layout', 'split' ); $background = sanitize_hex_color( get_theme_mod( 'kimpu_hero_background_color', '#f4f8f7' ) ); $heading_color = sanitize_hex_color( get_theme_mod( 'kimpu_hero_heading_color', '#17283b' ) ); $image_id = absint( get_theme_mod( 'kimpu_hero_featured_image', 0 ) ); $bg_id = absint( get_theme_mod( 'kimpu_hero_background_image', 0 ) ); $bg_url = $bg_id ? wp_get_attachment_image_url( $bg_id, 'full' ) : ''; $style = '--hero-background:' . esc_attr( $background ? $background : '#f4f8f7' ) . ';--hero-heading:' . esc_attr( $heading_color ? $heading_color : '#17283b' ) . ';--hero-overlay:' . ( absint( get_theme_mod( 'kimpu_hero_overlay_opacity', 45 ) ) / 100 ) . ';--hero-spacing:' . absint( get_theme_mod( 'kimpu_hero_vertical_spacing', 88 ) ) . 'px;'; if ( $bg_url ) { $style .= 'background-image:url(' . esc_url( $bg_url ) . ');'; }
 ?>
-<section class="homepage-hero homepage-hero-<?php echo esc_attr( $layout ); ?>" style="<?php echo esc_attr( $style ); ?>" id="hero">
+<section class="homepage-hero homepage-hero-<?php echo esc_attr( $layout ); ?> homepage-hero-align-<?php echo esc_attr( get_theme_mod( 'kimpu_hero_content_alignment', 'left' ) ); ?>" style="<?php echo esc_attr( $style ); ?>" id="hero">
     <div class="container homepage-hero-inner">
         <div class="homepage-hero-copy">
             <?php $eyebrow = get_theme_mod( 'kimpu_hero_eyebrow', __( 'WELCOME TO YOUR NEXT CHAPTER', 'kimpu-multipurpose' ) ); if ( $eyebrow ) : ?><p class="eyebrow"><?php echo esc_html( $eyebrow ); ?></p><?php endif; ?>

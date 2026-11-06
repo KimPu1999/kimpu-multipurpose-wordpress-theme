@@ -6,7 +6,7 @@ function kimpu_homepage_sections() {
 }
 
 function kimpu_homepage_section_defaults() {
-    return array( 'hero' => true, 'about' => true, 'services' => false, 'features' => false, 'portfolio' => false, 'statistics' => false, 'testimonials' => false, 'team' => false, 'faq' => false, 'latest' => true, 'cta' => false, 'contact' => false );
+    return array( 'hero' => true, 'about' => true, 'services' => false, 'features' => true, 'portfolio' => false, 'statistics' => false, 'testimonials' => false, 'team' => false, 'faq' => false, 'latest' => true, 'cta' => false, 'contact' => false );
 }
 
 function kimpu_sanitize_homepage_order( $value ) {
@@ -33,11 +33,11 @@ function kimpu_homepage_section_header( $section ) {
     echo '<header class="section-heading homepage-section-heading">'; if ( $subtitle ) { echo '<p class="eyebrow">' . esc_html( $subtitle ) . '</p>'; } if ( $title ) { echo '<h2>' . esc_html( $title ) . '</h2>'; } if ( $description ) { echo '<p>' . esc_html( $description ) . '</p>'; } echo '</header>';
 }
 
-function kimpu_homepage_source_page( $setting ) { $id = absint( get_theme_mod( $setting, 0 ) ); return $id ? get_post( $id ) : null; }
+function kimpu_homepage_source_page( $setting ) { $id = absint( get_theme_mod( $setting, 0 ) ); $page = $id ? get_post( $id ) : null; return $page && 'page' === $page->post_type && 'publish' === $page->post_status ? $page : null; }
 function kimpu_homepage_page_children( $setting, $limit = 0 ) { $page = kimpu_homepage_source_page( $setting ); if ( ! $page ) { return array(); } return get_pages( array( 'parent' => $page->ID, 'number' => $limit ? $limit : 0, 'sort_column' => 'menu_order,post_title', 'sort_order' => 'ASC', 'post_status' => 'publish' ) ); }
 
 function kimpu_homepage_icon( $icon ) {
     $icons = array( 'star' => '✦', 'check' => '✓', 'spark' => '✧', 'arrow' => '→', 'grid' => '▦', 'heart' => '♡' ); return isset( $icons[ $icon ] ) ? $icons[ $icon ] : $icons['star'];
 }
 
-function kimpu_homepage_render_section( $section ) { get_template_part( 'template-parts/homepage/section', $section ); }
+function kimpu_homepage_render_section( $section ) { get_template_part( 'template-parts/homepage/' . $section ); }

@@ -8,9 +8,11 @@ function kimpu_assets() {
     wp_enqueue_style( 'kimpu-footer', get_template_directory_uri() . '/assets/css/footer.css', array( 'kimpu-main' ), $version );
     wp_enqueue_style( 'kimpu-responsive', get_template_directory_uri() . '/assets/css/responsive.css', array( 'kimpu-header', 'kimpu-footer' ), $version );
     wp_enqueue_style( 'kimpu-interactions', get_template_directory_uri() . '/assets/css/interactions.css', array( 'kimpu-responsive' ), $version );
-    if ( is_front_page() ) { wp_enqueue_style( 'kimpu-homepage', get_template_directory_uri() . '/assets/css/homepage.css', array( 'kimpu-interactions' ), $version ); }
+    if ( is_front_page() ) { wp_enqueue_style( 'kimpu-homepage', get_template_directory_uri() . '/assets/css/homepage.css', array( 'kimpu-interactions' ), $version ); wp_enqueue_style( 'kimpu-homepage-overrides', get_template_directory_uri() . '/assets/css/homepage-overrides.css', array( 'kimpu-homepage' ), $version ); }
+    if ( is_page_template( array( 'page-templates/full-width.php', 'page-templates/no-sidebar.php', 'page-templates/landing.php', 'page-templates/landing-page.php', 'page-templates/blank-canvas.php', 'page-templates/about.php', 'page-templates/services.php', 'page-templates/portfolio.php', 'page-templates/contact.php' ) ) ) { wp_enqueue_style( 'kimpu-page-templates', get_template_directory_uri() . '/assets/css/page-templates.css', array( 'kimpu-interactions' ), $version ); }
     wp_enqueue_script( 'kimpu-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), $version, true );
     wp_enqueue_script( 'kimpu-interactions', get_template_directory_uri() . '/assets/js/theme-interactions.js', array(), $version, true );
+    if ( is_front_page() ) { wp_enqueue_script( 'kimpu-homepage', get_template_directory_uri() . '/assets/js/homepage.js', array(), $version, true ); }
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
@@ -26,6 +28,12 @@ function kimpu_assets() {
     if ( ! get_theme_mod( 'kimpu_header_border', false ) ) { $css .= '.site-header{border-bottom:0!important;}'; }
     if ( ! get_theme_mod( 'kimpu_header_shadow', false ) ) { $css .= '.site-header:not(.is-scrolled){box-shadow:none;}'; }
     if ( ! get_theme_mod( 'kimpu_footer_border', true ) ) { $css .= '.site-footer{border-top:0!important;}'; }
+    if ( is_front_page() && function_exists( 'kimpu_homepage_sections' ) ) {
+        foreach ( kimpu_homepage_sections() as $section ) {
+            $bg = sanitize_hex_color( get_theme_mod( 'kimpu_home_' . $section . '_background_color', '' ) ); $text = sanitize_hex_color( get_theme_mod( 'kimpu_home_' . $section . '_text_color', '' ) );
+            if ( $bg || $text ) { $css .= '.homepage-section-' . sanitize_html_class( $section ) . '{' . ( $bg ? 'background-color:' . $bg . '!important;' : '' ) . ( $text ? 'color:' . $text . '!important;' : '' ) . '}'; }
+        }
+    }
     wp_add_inline_style( 'kimpu-main', $css );
 }
 add_action( 'wp_enqueue_scripts', 'kimpu_assets' );

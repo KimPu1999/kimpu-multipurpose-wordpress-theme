@@ -11,7 +11,7 @@ Upload `kimpu-multipurpose-phase3.zip` under **Appearance → Themes → Add New
 
 ## Homepage Builder
 
-The **Homepage Builder** section configures twelve native theme sections:
+The **KimPu Homepage Builder** panel contains separate General Homepage, Hero, About, Services, Features, Portfolio, Statistics, Testimonials, Team, FAQ, Blog, CTA, and Contact sections. It configures twelve native theme sections:
 
 - Hero
 - About
@@ -27,6 +27,8 @@ The **Homepage Builder** section configures twelve native theme sections:
 - Contact
 
 Each section has visibility, title, subtitle, description, layout, background, and spacing controls. Section order accepts a validated comma-separated list of section slugs; missing or invalid values are safely appended. This is an ordered selector, not an unimplemented drag-and-drop control.
+
+Homepage-specific styles are loaded from `assets/css/homepage.css` and `assets/css/page-templates.css`; the FAQ single-open option is handled by the dependency-free `assets/js/homepage.js` script.
 
 The builder does not create demo records. About and Contact can read published Pages and Block Editor content. Services, Testimonials, and Team use published child Pages beneath a selected parent Page. Portfolio and Latest Blog use existing Posts. Features, Statistics, and FAQ use compact line-based settings with safe text/SVG registries and native `<details>` accordions.
 
