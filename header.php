@@ -14,4 +14,3 @@
 <header class="site-header site-header-<?php echo esc_attr( $header_layout ); ?> mobile-menu-<?php echo esc_attr( get_theme_mod( 'kimpu_mobile_menu_style', 'drawer' ) ); ?><?php echo get_theme_mod( 'kimpu_sticky_header', false ) ? ' is-sticky' : ''; ?><?php echo get_theme_mod( 'kimpu_header_border', false ) ? ' has-border' : ''; ?><?php echo get_theme_mod( 'kimpu_header_shadow', false ) ? ' has-shadow' : ''; ?>" id="site-header">
     <?php get_template_part( 'template-parts/header/header', $header_layout ); ?>
 </header>
-<?php if ( function_exists( 'kimpu_render_breadcrumbs' ) ) { kimpu_render_breadcrumbs(); } ?>
