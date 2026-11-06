@@ -1,9 +1,33 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { exit; }
-function kimpu_register_design_settings( $c ) {
-    $c->add_section( 'kimpu_design', array( 'title' => __( 'Global Design', 'kimpu-multipurpose' ), 'priority' => 35 ) );
-    $colors = array( 'kimpu_primary_color' => array( '#137c66', __( 'Primary Color', 'kimpu-multipurpose' ) ), 'kimpu_text_color' => array( '#34465a', __( 'Text Color', 'kimpu-multipurpose' ) ), 'kimpu_background_color' => array( '#ffffff', __( 'Background Color', 'kimpu-multipurpose' ) ) );
-    foreach ( $colors as $id => $data ) { $c->add_setting( $id, array( 'default' => $data[0], 'sanitize_callback' => 'sanitize_hex_color', 'transport' => 'refresh' ) ); $c->add_control( new WP_Customize_Color_Control( $c, $id, array( 'label' => $data[1], 'section' => 'kimpu_design' ) ) ); }
-    $c->add_setting( 'kimpu_container_width', array( 'default' => 1200, 'sanitize_callback' => 'absint' ) ); $c->add_control( 'kimpu_container_width', array( 'label' => __( 'Container Width (px)', 'kimpu-multipurpose' ), 'section' => 'kimpu_design', 'type' => 'number', 'input_attrs' => array( 'min' => 960, 'max' => 1600, 'step' => 10 ) ) );
-    $c->add_setting( 'kimpu_button_radius', array( 'default' => 10, 'sanitize_callback' => 'absint' ) ); $c->add_control( 'kimpu_button_radius', array( 'label' => __( 'Button Radius (px)', 'kimpu-multipurpose' ), 'section' => 'kimpu_design', 'type' => 'number', 'input_attrs' => array( 'min' => 0, 'max' => 30 ) ) );
+
+function kimpu_register_global_design_settings( $customizer ) {
+	$customizer->add_panel(
+		'kimpu_global_design',
+		array(
+			'title'       => __( 'KimPu Global Design', 'kimpu-multipurpose' ),
+			'priority'    => 25,
+			'description' => __( 'Control the shared visual language used by the theme. Existing Header and Footer Builder controls remain component-specific.', 'kimpu-multipurpose' ),
+		)
+	);
+
+	kimpu_register_preset_controls( $customizer );
+	kimpu_register_color_controls( $customizer );
+	kimpu_register_typography_controls( $customizer );
+	kimpu_register_layout_controls( $customizer );
+	kimpu_register_button_controls( $customizer );
+	kimpu_register_spacing_controls( $customizer );
+	kimpu_register_dark_mode_controls( $customizer );
+	kimpu_register_responsive_controls( $customizer );
+
+	$customizer->add_section( 'kimpu_design_components', array( 'title' => __( 'Header & Footer Appearance', 'kimpu-multipurpose' ), 'panel' => 'kimpu_global_design', 'priority' => 90, 'description' => __( 'Global typography, buttons, spacing, and focus styles are inherited. Component-specific colors and dimensions remain overrides in Header Builder and Footer Builder.', 'kimpu-multipurpose' ) ) );
+
+	$customizer->add_section( 'kimpu_design_advanced', array( 'title' => __( 'Advanced Design Settings', 'kimpu-multipurpose' ), 'panel' => 'kimpu_global_design', 'priority' => 100 ) );
+	$customizer->add_setting( 'kimpu_design_reduced_motion', array( 'default' => false, 'sanitize_callback' => 'rest_sanitize_boolean', 'transport' => 'refresh' ) );
+	$customizer->add_control( 'kimpu_design_reduced_motion', array( 'label' => __( 'Reduce theme motion', 'kimpu-multipurpose' ), 'description' => __( 'The theme already respects the operating system preference. Enable this to minimize transitions for every visitor.', 'kimpu-multipurpose' ), 'section' => 'kimpu_design_advanced', 'type' => 'checkbox' ) );
+}
+
+/** Backward-compatible entry point for child themes and extensions. */
+function kimpu_register_design_settings( $customizer ) {
+	if ( function_exists( 'kimpu_register_global_design_settings' ) ) { kimpu_register_global_design_settings( $customizer ); }
 }

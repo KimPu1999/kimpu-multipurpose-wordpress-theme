@@ -1,6 +1,14 @@
-# KimPu Multipurpose — Phase 4
+# KimPu Multipurpose — Phase 5
 
-KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, and content-led sites. Version 1.3.0 adds a native editorial blog and content-management presentation system while preserving the Phase 1 homepage, Phase 2 header/footer/navigation, and Phase 3 Homepage Builder.
+KimPu Multipurpose is a classic PHP WordPress theme for professional personal, business, editorial, and content-led sites. Version 1.4.0 adds a global design system and advanced Customizer-based design builder while preserving the Phase 1 homepage, Phase 2 header/footer/navigation, Phase 3 Homepage Builder, and Phase 4 editorial blog.
+
+## Global Design Builder
+
+The **KimPu Global Design** panel provides validated design presets, global color tokens, system-safe typography, layout widths, button and form styling, spacing and radius controls, responsive values, and Light/Dark/System color modes. The five presets are Premium Emerald, Corporate Blue, Elegant Purple, Warm Orange, and Minimal Neutral. Choose **Custom values** when individual controls should take precedence over a preset.
+
+The frontend mode switcher is available in the desktop header and mobile navigation. It follows the configured System Preference by default, stores a visitor’s explicit light/dark choice in browser storage when available, and falls back cleanly when storage is blocked. It does not alter images or inject arbitrary CSS.
+
+Global settings compile into safe CSS custom properties shared by the Header Builder, Footer Builder, Homepage Builder, Blog, archives, page templates, forms, cards, buttons, and Gutenberg-aligned content. Header/Footer component colors remain explicit overrides. The editor palette and content widths in `theme.json` are aligned with the default frontend tokens; Customizer-only values update the editor after an editor refresh.
 
 ## Requirements and installation
 
@@ -71,6 +79,8 @@ Header Builder, Footer Builder, Social Links, navigation menus, sticky headers, 
 - If Customizer changes are not visible, clear site/page-cache plugins and reload.
 - Add widgets to **Appearance → Widgets → Blog Sidebar** and enable the sidebar in **KimPu Blog Settings** to display it.
 - Theme forms are not implemented; add a trusted form plugin/block in a Contact Page or Contact source Page. The theme does not include an insecure mail handler.
+- If a preset appears to ignore an individual color, switch **Design Preset** to **Custom values**; preset mode intentionally provides the active palette as an explicit visual choice.
+- If a saved mode does not appear, check browser storage permissions. The site still follows the administrator’s configured Light/Dark/System default without storage.
 
 ## Developer checks
 

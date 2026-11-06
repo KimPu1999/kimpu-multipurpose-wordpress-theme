@@ -1,9 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> data-theme="<?php echo esc_attr( function_exists( 'kimpu_design_mode' ) ? kimpu_design_mode() : 'system' ); ?>" data-theme-default="<?php echo esc_attr( function_exists( 'kimpu_design_mode' ) ? kimpu_design_mode() : 'system' ); ?>">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var m=localStorage.getItem('kimpu-theme-mode');if(m==='light'||m==='dark'||m==='system'){document.documentElement.setAttribute('data-theme',m);}}catch(e){}}());</script>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

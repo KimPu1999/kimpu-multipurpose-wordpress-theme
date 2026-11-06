@@ -4,8 +4,8 @@
   "settings": {
     "appearanceTools": true,
     "layout": {
-      "contentSize": "840px",
-      "wideSize": "1200px"
+      "contentSize": "760px",
+      "wideSize": "1320px"
     },
     "color": {
       "palette": [
@@ -28,6 +28,16 @@
           "slug": "surface",
           "color": "#f4f8f7",
           "name": "Surface"
+        },
+        {
+          "slug": "accent",
+          "color": "#e3a857",
+          "name": "Accent"
+        },
+        {
+          "slug": "border",
+          "color": "#e2e8f0",
+          "name": "Border"
         },
         {
           "slug": "white",

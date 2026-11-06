@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.0 — Phase 5
+
+- Added the KimPu Global Design Customizer panel with design presets, global colors, typography, layout, buttons/forms, spacing, responsive values, and advanced settings.
+- Preserved legacy Phase 1 global setting IDs while moving their controls into the new panel; no duplicate Customizer setting IDs were introduced.
+- Added safe CSS custom-property tokens for shared Header, Footer, Homepage, Blog, archive, page-template, Gutenberg, card, button, form, and pagination styling.
+- Added Light, Dark, and System color modes with a keyboard-accessible frontend switcher, browser preference persistence, reduced-motion support, and flash prevention.
+- Added system-safe font choices, fluid heading sizes, responsive container padding, fixed mobile/tablet/desktop breakpoints, and file-mtime asset versions.
+- Updated theme.json editor content widths and palette alignment; theme version is now 1.4.0.
+
 ## 1.3.0 — Phase 4
 
 - Added Grid, List, and Magazine blog listing layouts using the native WordPress main query.
